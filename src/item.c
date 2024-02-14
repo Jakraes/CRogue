@@ -19,3 +19,9 @@ void item_free(void* item) {
         free(ptr);
     }
 }
+
+Item* item_new_ironsword(int x, int y) {
+    Object* object = object_new('/', terminal_new_color(T_BLK, T_BLK, 1), "an iron sword", "It's an iron sword.");
+    
+    return item_new(object, x, y, 0);
+}

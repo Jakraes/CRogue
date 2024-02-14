@@ -61,4 +61,5 @@ void map_generate_test(Map* map) {
     }
     
     array_push(map->entities, entity_new_player(0, 0));
+    array_push(map->items, item_new_ironsword(3, 4));
 }
