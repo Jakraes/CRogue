@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 		for (int i = 0; i < map->entities->length; i++) {
 			Entity* p = map->entities->data[i];
 			
-			entity_move(p, map);
+			entity_act(p, map);
 			
 			terminal_change_color(p->object->color);
 			terminal_put(p->x, p->y, p->object->glyph);

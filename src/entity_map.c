@@ -19,7 +19,7 @@ static void entity_move_orc(Entity* entity, Map* map) {
     
 }
 
-void entity_move(Entity* entity, Map* map) {
+void entity_act(Entity* entity, Map* map) {
     switch(entity->name) {
         case PLAYER:
             entity_move_player(entity, map);
