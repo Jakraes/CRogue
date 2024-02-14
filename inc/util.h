@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void init_rand(long seed);
+void init_rand();
+void init_rand_seed(long seed);
 int rand_int(int min, int max);
 
 #endif

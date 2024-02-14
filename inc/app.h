@@ -3,6 +3,7 @@
 
 #include "terminal.h"
 #include "entity_map.h"
+#include "util.h"
 
 void app_init();
 void app_loop();

@@ -31,9 +31,11 @@ static void app_draw_map(Map* map) {
 		for (int i = 0; i < map->entities->length; i++) {
 			Entity* p = map->entities->data[i];
 			
+			/*
 			if (p->name == PLAYER) {
 			    app_draw_player_inventory(p);
 			}
+			*/
 			
 			entity_act(p, map);
 			
@@ -45,10 +47,15 @@ static void app_draw_map(Map* map) {
 static Map* game_map; 
 
 void app_init() {
-    game_map = map_new(10, 10);
-	map_generate_test(game_map);
-	
 	terminal_init();
+	
+	init_rand();
+	
+	SEED = rand_int(0, 1024);
+	
+	game_map = map_new(terminal_get_width(), terminal_get_height());
+	//map_generate_test(game_map);
+	map_generate_world(game_map);
 }
 
 void app_loop() {

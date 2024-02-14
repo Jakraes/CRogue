@@ -3,7 +3,7 @@
 #ifndef PERLIN_H
 #define PERLIN_H
 
-long SEED = 0;
+extern long SEED;
 
 int noise2(int x, int y);
 float lin_inter(float x, float y, float s);

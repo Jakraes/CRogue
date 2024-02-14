@@ -1,7 +1,5 @@
 #include "terminal.h"
 
-static WINDOW* w;
-
 static void init_colors()
 {
     start_color();
@@ -17,7 +15,7 @@ static void init_colors()
 
 void terminal_init()
 {
-    w = initscr();
+    initscr();
     noecho();
     cbreak();
     curs_set(0);
@@ -74,13 +72,9 @@ attr_t terminal_new_color(int fg, int bg, bool bright)
 }
 
 size_t terminal_get_width() {
-    size_t x, _;
-    getmaxyx(w, x, _);
-    return x;
+    return getmaxx(stdscr);
 }
 
 size_t terminal_get_height() {
-    size_t y, _;
-    getmaxyx(w, _, y);
-    return y;
+    return getmaxy(stdscr);
 }
