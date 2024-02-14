@@ -22,5 +22,5 @@ void entity_free(void* entity) {
 }
 
 Entity* entity_new_player(int x, int y) {
-    return entity_new(object_new('@', terminal_new_color(T_WHT, T_BLK, 1)), PLAYER, x, y, 1);
+    return entity_new(object_new('@', terminal_new_color(T_WHT, T_BLK, 1), "player", "It's you!"), PLAYER, x, y, 1);
 }
