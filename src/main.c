@@ -1,8 +1,10 @@
 #include "terminal.h"
 #include "entity.h"
+#include "map.h"
 
 int main(int argc, char* argv[]) {
-	Entity* player = entity_new_player(0, 0);
+	Map* map = map_new(10, 10);
+	map_generate_test(map);
 	
 	terminal_init();
 	
@@ -10,10 +12,28 @@ int main(int argc, char* argv[]) {
 		terminal_input();
 		terminal_clear();
 		
-		entity_move(player);
+		for (int i = 0; i < map->terrains->length; i++) {
+			Terrain* p = map->terrains->data[i];
+			
+			terminal_change_color(p->object->color);
+			terminal_put(p->x, p->y, p->object->glyph);
+		}
 		
-		terminal_change_color(player->object->color);
-		terminal_put(player->x, player->y, player->object->glyph);
+		for (int i = 0; i < map->items->length; i++) {
+			Item* p = map->items->data[i];
+			
+			terminal_change_color(p->object->color);
+			terminal_put(p->x, p->y, p->object->glyph);
+		}
+		
+		for (int i = 0; i < map->entities->length; i++) {
+			Entity* p = map->entities->data[i];
+			
+			entity_move(p);
+			
+			terminal_change_color(p->object->color);
+			terminal_put(p->x, p->y, p->object->glyph);
+		}
 		
 		terminal_refresh();
 	}

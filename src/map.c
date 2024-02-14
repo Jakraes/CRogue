@@ -54,9 +54,11 @@ bool map_is_occupied(Map* map, int x, int y) {
 void map_generate_test(Map* map) {
     for (int y = 0; y < 10; y++) {
         for (int x = 0; x < 10; x++) {
-            Object* object = object_new(' ', color_new(T_WHT, T_GRN, 0));
+            Object* object = object_new(' ', terminal_new_color(T_WHT, T_GRN, 0));
             
-            array_push(map->terrains, terrain_
+            array_push(map->terrains, terrain_new(object, x, y, 0));
         }
     }
+    
+    array_push(map->entities, entity_new_player(0, 0));
 }
