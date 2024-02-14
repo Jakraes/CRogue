@@ -38,6 +38,8 @@ int main(int argc, char* argv[]) {
 	}
 	
 	terminal_end();
+	
+	map_free(map);
 
 	return EXIT_SUCCESS;
 }

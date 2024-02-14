@@ -13,4 +13,6 @@ typedef struct {
 Item* item_new(Object* object, int x, int y, bool solid);
 void item_free(void* item);
 
+Item* item_new_ironsword(int x, int y);
+
 #endif

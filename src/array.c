@@ -75,3 +75,16 @@ void* array_remove(Array* array, size_t index) {
 
 	return result;
 }
+
+void* array_remove_ptr(Array* array, void* obj) {
+    size_t index = -1;
+
+    for (size_t i = 0; i < array->length; i++) {
+        if (array->data[i] == obj) {
+            index = i;
+            break;
+        }
+    }
+    
+    return index != -1 ? array_remove(array, index) : NULL;
+}

@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity* entity_new(Object* object, EntityName name, int x, int y, bool solid) {
+Entity* entity_new(Object* object, EntityName name, int x, int y, bool solid, size_t inventory_capacity) {
     Entity* result = malloc(sizeof(Entity));
     
     result->object = object;
@@ -8,6 +8,7 @@ Entity* entity_new(Object* object, EntityName name, int x, int y, bool solid) {
     result->x = x;
     result->y = y;
     result->solid = solid;
+    result->inventory = inventory_new(inventory_capacity);
     
     return result;
 }
