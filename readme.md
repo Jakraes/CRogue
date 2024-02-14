@@ -17,3 +17,6 @@
 - [ ] Village map generation
 - [ ] Magic system
 - [ ] Alchemy system
+
+## Other
+- [ ] Better app.c code structure
