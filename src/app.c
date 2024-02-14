@@ -63,6 +63,13 @@ void app_loop() {
 		terminal_input();
 		terminal_clear();
 		
+		if (terminal_current_key == 'r') {
+		    SEED = rand_int(0, 1024);
+		    map_free(game_map);
+		    game_map = map_new(terminal_get_width(), terminal_get_height());
+		    map_generate_world(game_map);
+		}
+		
 		app_draw_map(game_map);
 		
 		terminal_refresh();
