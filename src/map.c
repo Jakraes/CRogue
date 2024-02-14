@@ -27,7 +27,7 @@ bool map_is_occupied(Map* map, int x, int y) {
     for (size_t i = 0; i < map->terrains->length; i++) {
         Terrain* p = (Terrain*) map->terrains->data[i];
         
-        if (p->x == x && p->y == y) {
+        if (p->x == x && p->y == y && p->solid) {
             return 1;
         }
     }
@@ -35,7 +35,7 @@ bool map_is_occupied(Map* map, int x, int y) {
     for (size_t i = 0; i < map->items->length; i++) {
         Item* p = (Item*) map->items->data[i];
         
-        if (p->x == x && p->y == y) {
+        if (p->x == x && p->y == y && p->solid) {
             return 1;
         }
     }
@@ -43,7 +43,7 @@ bool map_is_occupied(Map* map, int x, int y) {
     for (size_t i = 0; i < map->entities->length; i++) {
         Entity* p = (Entity*) map->entities->data[i];
         
-        if (p->x == x && p->y == y) {
+        if (p->x == x && p->y == y && p->solid) {
             return 1;
         }
     }

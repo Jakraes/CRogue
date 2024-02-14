@@ -18,7 +18,6 @@ typedef struct {
 
 Entity* entity_new(Object* object, EntityName name, int x, int y, bool solid);
 void entity_free(void* entity);
-void entity_move(Entity* entity);
 
 Entity* entity_new_player(int x, int y);
 

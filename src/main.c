@@ -1,6 +1,5 @@
 #include "terminal.h"
-#include "entity.h"
-#include "map.h"
+#include "entity_map.h"
 
 int main(int argc, char* argv[]) {
 	Map* map = map_new(10, 10);
@@ -29,7 +28,7 @@ int main(int argc, char* argv[]) {
 		for (int i = 0; i < map->entities->length; i++) {
 			Entity* p = map->entities->data[i];
 			
-			entity_move(p);
+			entity_move(p, map);
 			
 			terminal_change_color(p->object->color);
 			terminal_put(p->x, p->y, p->object->glyph);
