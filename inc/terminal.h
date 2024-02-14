@@ -35,5 +35,7 @@ void terminal_clear();
 void terminal_refresh();
 void terminal_input();
 attr_t terminal_new_color(int fg, int bg, bool bright);
+size_t terminal_get_width();
+size_t terminal_get_height();
 
 #endif
