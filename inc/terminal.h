@@ -2,7 +2,16 @@
 #define TERMINAL_H
 
 #include <stdlib.h>
-#include "external/curses.h"
+#include "curses.h"
+
+#define T_BLK 0
+#define T_BLU 1
+#define T_GRN 2
+#define T_CYN 3
+#define T_RED 4
+#define T_PUR 5
+#define T_YLW 6
+#define T_WHT 7
 
 #define T_UL 55
 #define T_UM 56
