@@ -3,14 +3,15 @@
 
 #include "terminal.h"
 
-typedef struct {
+typedef struct
+{
     unsigned char glyph;
     attr_t color;
-    char* name;
-    char* description;
+    char *name;
+    char *description;
 } Object;
 
-Object* object_new(unsigned char glyph, attr_t color, char* name, char* description);
-void object_free(void* object);
+Object *object_new(unsigned char glyph, attr_t color, char *name, char *description);
+void object_free(void *object);
 
 #endif

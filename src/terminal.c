@@ -32,7 +32,7 @@ void terminal_init()
 void terminal_end()
 {
     endwin();
-}   
+}
 
 void terminal_change_color(attr_t color)
 {
@@ -66,15 +66,17 @@ void terminal_input()
     terminal_current_key = getch();
 }
 
-attr_t terminal_new_color(int fg, int bg, bool bright)
+attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg)
 {
-    return COLOR_PAIR(bg << 4 | fg) | (bright ? A_BOLD : A_NORMAL);
+    return COLOR_PAIR(fg << 4 | bg) | (bbg ? A_BOLD : A_NORMAL) | A_REVERSE | (bfg ? A_BOLD : A_NORMAL);
 }
 
-size_t terminal_get_width() {
+size_t terminal_get_width()
+{
     return getmaxx(stdscr);
 }
 
-size_t terminal_get_height() {
+size_t terminal_get_height()
+{
     return getmaxy(stdscr);
 }

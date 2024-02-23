@@ -7,20 +7,23 @@
 #include "entity.h"
 #include "perlin.h"
 
-typedef struct {
+typedef struct
+{
     unsigned int width;
     unsigned int height;
     unsigned int seed;
-    Array* terrains;
-    Array* items;
-    Array* entities;
+    Array *terrains;
+    Array *items;
+    Array *entities;
 } Map;
 
-Map* map_new(unsigned int width, unsigned height);
-void map_free(void* map);
-bool map_is_occupied(Map* map, int x, int y);
+extern float map_perlin_freq;
 
-void map_generate_test(Map* map);
-void map_generate_world(Map* map);
+Map *map_new(unsigned int width, unsigned height);
+void map_free(void *map);
+bool map_is_occupied(Map *map, int x, int y);
+
+void map_generate_test(Map *map);
+void map_generate_world(Map *map);
 
 #endif

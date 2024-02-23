@@ -4,23 +4,25 @@
 #include "object.h"
 #include "inventory.h"
 
-typedef enum {
+typedef enum
+{
     PLAYER,
     ORC,
 } EntityName;
 
-typedef struct {
-    Object* object;
+typedef struct
+{
+    Object *object;
     EntityName name;
     int x;
     int y;
     bool solid;
-    Inventory* inventory;
+    Inventory *inventory;
 } Entity;
 
-Entity* entity_new(Object* object, EntityName name, int x, int y, bool solid, size_t inventory_capacity);
-void entity_free(void* entity);
+Entity *entity_new(Object *object, EntityName name, int x, int y, bool solid, size_t inventory_capacity);
+void entity_free(void *entity);
 
-Entity* entity_new_player(int x, int y);
+Entity *entity_new_player(int x, int y);
 
 #endif

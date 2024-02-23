@@ -4,6 +4,6 @@
 #include "map.h"
 #include "entity.h"
 
-void entity_act(Entity* entity, Map* map);
+void entity_act(Entity *entity, Map *map);
 
 #endif

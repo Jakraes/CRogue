@@ -2,16 +2,7 @@
 #define TERMINAL_H
 
 #include <stdlib.h>
-#include "curses.h"
-
-#define T_BLK 0
-#define T_BLU 1
-#define T_GRN 2
-#define T_CYN 3
-#define T_RED 4
-#define T_PUR 5
-#define T_YLW 6
-#define T_WHT 7
+#include "external/curses.h"
 
 #define T_UL 55
 #define T_UM 56
@@ -34,7 +25,7 @@ void terminal_put_string(int x, int y, char *str);
 void terminal_clear();
 void terminal_refresh();
 void terminal_input();
-attr_t terminal_new_color(int fg, int bg, bool bright);
+attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg);
 size_t terminal_get_width();
 size_t terminal_get_height();
 
