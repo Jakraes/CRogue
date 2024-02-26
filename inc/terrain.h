@@ -3,6 +3,13 @@
 
 #include "object.h"
 
+typedef enum
+{
+    GRASS,
+    WATER,
+    SAND
+} TerrainType;
+
 typedef struct
 {
     Object *object;
@@ -11,7 +18,7 @@ typedef struct
     bool solid;
 } Terrain;
 
-Terrain *terrain_new(Object *object, int x, int y, bool solid);
+Terrain *terrain_new(int x, int y, TerrainType type);
 void terrain_free(void *terrain);
 
 #endif

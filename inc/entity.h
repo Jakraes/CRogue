@@ -8,21 +8,19 @@ typedef enum
 {
     PLAYER,
     ORC,
-} EntityName;
+} EntityType;
 
 typedef struct
 {
     Object *object;
-    EntityName name;
+    EntityType type;
     int x;
     int y;
     bool solid;
     Inventory *inventory;
 } Entity;
 
-Entity *entity_new(Object *object, EntityName name, int x, int y, bool solid, size_t inventory_capacity);
+Entity *entity_new(int x, int y, EntityType type);
 void entity_free(void *entity);
-
-Entity *entity_new_player(int x, int y);
 
 #endif

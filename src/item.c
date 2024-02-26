@@ -1,13 +1,32 @@
 #include "item.h"
 
-Item *item_new(Object *object, int x, int y, bool solid)
+// Static generator functions
+static void item_new_ironsword(Item *item)
+{
+    item->object = object_new('/', terminal_new_color(T_BLK, T_BLK, 1, 0), "an iron sword", "It's an iron sword.");
+    item->solid = 0;
+}
+
+static void item_generate(Item *item, ItemType type)
+{
+
+    switch (type)
+    {
+    case IRON_SWORD:
+        item_new_ironsword(item);
+        break;
+    }
+}
+
+// Header implementation
+Item *item_new(int x, int y, ItemType type)
 {
     Item *result = malloc(sizeof(Item));
 
-    result->object = object;
     result->x = x;
     result->y = y;
-    result->solid = solid;
+
+    item_generate(result, type);
 
     return result;
 }
@@ -21,11 +40,4 @@ void item_free(void *item)
         object_free(ptr->object);
         free(ptr);
     }
-}
-
-Item *item_new_ironsword(int x, int y)
-{
-    Object *object = object_new('/', terminal_new_color(T_BLK, T_BLK, 1, 0), "an iron sword", "It's an iron sword.");
-
-    return item_new(object, x, y, 0);
 }

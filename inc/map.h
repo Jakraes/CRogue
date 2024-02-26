@@ -19,7 +19,7 @@ typedef struct
 
 extern float map_perlin_freq;
 
-Map *map_new(unsigned int width, unsigned height);
+Map *map_new(unsigned int width, unsigned int height, unsigned int seed);
 void map_free(void *map);
 bool map_is_occupied(Map *map, int x, int y);
 

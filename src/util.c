@@ -7,7 +7,7 @@ void init_rand()
 
 void init_rand_seed(long seed)
 {
-    srand(time(&seed));
+    srand(time((time_t *)&seed));
 }
 
 int rand_int(int min, int max)

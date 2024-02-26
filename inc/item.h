@@ -3,6 +3,11 @@
 
 #include "object.h"
 
+typedef enum
+{
+    IRON_SWORD
+} ItemType;
+
 typedef struct
 {
     Object *object;
@@ -11,9 +16,7 @@ typedef struct
     bool solid;
 } Item;
 
-Item *item_new(Object *object, int x, int y, bool solid);
+Item *item_new(int x, int y, ItemType type);
 void item_free(void *item);
-
-Item *item_new_ironsword(int x, int y);
 
 #endif

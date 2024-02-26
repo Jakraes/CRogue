@@ -2,7 +2,7 @@
 #define TERMINAL_H
 
 #include <stdlib.h>
-#include "curses.h"
+#include "external/curses.h"
 
 #define T_BLK 0
 #define T_BLU 1

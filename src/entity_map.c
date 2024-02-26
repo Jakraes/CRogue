@@ -19,7 +19,7 @@ static void entity_act_player(Entity *entity, Map *map)
 
         break;
 
-    default:; // Defaults to movement
+    default:; // Defaults to movement (NEEDS SEMICOLON TO WORK)
         int index = terminal_current_key - 49;
 
         int x = entity->x + possible_moves[index][0];
@@ -41,7 +41,7 @@ static void entity_act_orc(Entity *entity, Map *map)
 
 void entity_act(Entity *entity, Map *map)
 {
-    switch (entity->name)
+    switch (entity->type)
     {
     case PLAYER:
         entity_act_player(entity, map);

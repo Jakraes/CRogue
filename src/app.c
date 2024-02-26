@@ -58,7 +58,7 @@ void app_init()
 
 	init_rand();
 
-	game_map = map_new(120, 30);
+	game_map = map_new(120, 30, rand_int(0, 1024));
 	// map_generate_test(game_map);
 	map_generate_world(game_map);
 }
@@ -74,8 +74,7 @@ void app_loop()
 		{
 		case 'r':
 			map_free(game_map);
-			game_map = map_new(120, 30);
-			game_map->seed = rand_int(0, 1024);
+			game_map = map_new(120, 30, rand_int(0, 1024));
 			map_generate_world(game_map);
 			break;
 
