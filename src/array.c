@@ -46,6 +46,10 @@ void array_free_contents(Array *array)
 	{
 		array->free_func(array->data[i]);
 	}
+
+	array->_space = ARRAY_INCREMENT;
+	array->length = 0;
+	array->data = realloc(array->data, sizeof(void *) * ARRAY_INCREMENT);
 }
 
 void array_push(Array *array, void *obj)

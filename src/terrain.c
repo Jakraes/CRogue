@@ -3,31 +3,31 @@
 // Static generator functions
 static void terrain_new_grass_low(Terrain *terrain)
 {
-    terrain->object = object_new(".", terminal_new_color(T_GRN, T_BLK, 0, 0), "low grass", "It's grass.");
+    terrain->object = object_new('.', terminal_new_color(T_GRN, T_BLK, 0, 0), "low grass", "It's grass.");
     terrain->solid = 0;
 }
 
 static void terrain_new_grass_high(Terrain *terrain)
 {
-    terrain->object = object_new("v", terminal_new_color(T_GRN, T_BLK, 1, 0), "tall grass", "It's tall grass.");
+    terrain->object = object_new('v', terminal_new_color(T_GRN, T_BLK, 1, 0), "tall grass", "It's tall grass.");
     terrain->solid = 0;
 }
 
 static void terrain_new_water_shallow(Terrain *terrain)
 {
-    terrain->object = object_new("~", terminal_new_color(T_CYN, T_BLK, 0, 0), "water", "It's water.");
+    terrain->object = object_new('~', terminal_new_color(T_CYN, T_BLK, 0, 0), "water", "It's water.");
     terrain->solid = 1;
 }
 
 static void terrain_new_water_deep(Terrain *terrain)
 {
-    terrain->object = object_new("~", terminal_new_color(T_BLU, T_BLK, 0, 0), "deep water", "It's deep water.");
+    terrain->object = object_new('~', terminal_new_color(T_BLU, T_BLK, 0, 0), "deep water", "It's deep water.");
     terrain->solid = 1;
 }
 
 static void terrain_new_sand(Terrain *terrain)
 {
-    terrain->object = object_new(".", terminal_new_color(T_YLW, T_BLK, 1, 0), "sand", "It's sand.");
+    terrain->object = object_new('.', terminal_new_color(T_YLW, T_BLK, 1, 0), "sand", "It's sand.");
     terrain->solid = 0;
 }
 

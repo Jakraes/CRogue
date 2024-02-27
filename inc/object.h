@@ -6,13 +6,13 @@
 
 typedef struct
 {
-    char *glyph;
+    unsigned char glyph;
     attr_t color;
     char *name;
     char *description;
 } Object;
 
-Object *object_new(char *glyph, attr_t color, char *name, char *description);
+Object *object_new(unsigned char glyph, attr_t color, char *name, char *description);
 void object_free(void *object);
 
 #endif

@@ -9,7 +9,7 @@ static void app_draw_player_inventory(Entity *entity)
 		Item *p = entity->inventory->items->data[i];
 
 		terminal_change_color(p->object->color);
-		terminal_put_string(10, i, p->object->glyph);
+		terminal_put(10, i, p->object->glyph);
 		terminal_change_color(def_color);
 		terminal_put_string(12, i, p->object->name);
 	}
@@ -22,7 +22,7 @@ static void app_draw_map(Map *map)
 		Terrain *p = map->terrains->data[i];
 
 		terminal_change_color(p->object->color);
-		terminal_put_string(p->x, p->y, p->object->glyph);
+		terminal_put(p->x, p->y, p->object->glyph);
 	}
 
 	for (int i = 0; i < map->items->length; i++)
@@ -30,7 +30,7 @@ static void app_draw_map(Map *map)
 		Item *p = map->items->data[i];
 
 		terminal_change_color(p->object->color);
-		terminal_put_string(p->x, p->y, p->object->glyph);
+		terminal_put(p->x, p->y, p->object->glyph);
 	}
 
 	for (int i = 0; i < map->entities->length; i++)
@@ -46,7 +46,7 @@ static void app_draw_map(Map *map)
 		entity_act(p, map);
 
 		terminal_change_color(p->object->color);
-		terminal_put_string(p->x, p->y, p->object->glyph);
+		terminal_put(p->x, p->y, p->object->glyph);
 	}
 }
 

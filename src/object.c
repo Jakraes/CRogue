@@ -1,13 +1,13 @@
 #include "object.h"
 
-Object *object_new(char *glyph, attr_t color, char *name, char *description)
+Object *object_new(unsigned char glyph, attr_t color, char *name, char *description)
 {
     Object *result = malloc(sizeof(Object));
 
-    result->glyph = strdup(glyph);
+    result->glyph = glyph;
     result->color = color;
     result->name = strdup(name);
-    result->description = description;
+    result->description = strdup(description);
 
     return result;
 }
@@ -16,6 +16,10 @@ void object_free(void *object)
 {
     if (object)
     {
-        free(object);
+        Object *ptr = (Object *)object;
+
+        free(ptr->name);
+        free(ptr->description);
+        free(ptr);
     }
 }

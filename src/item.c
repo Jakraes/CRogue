@@ -3,7 +3,7 @@
 // Static generator functions
 static void item_new_ironsword(Item *item)
 {
-    item->object = object_new("/", terminal_new_color(T_BLK, T_BLK, 1, 0), "an iron sword", "It's an iron sword.");
+    item->object = object_new('/', terminal_new_color(T_BLK, T_BLK, 1, 0), "an iron sword", "It's an iron sword.");
     item->solid = 0;
 }
 
