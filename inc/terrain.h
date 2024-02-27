@@ -5,9 +5,15 @@
 
 typedef enum
 {
-    GRASS,
-    WATER,
-    SAND
+    GRASS_LOW,
+    GRASS_HIGH,
+    WATER_SHALLOW,
+    WATER_DEEP,
+    SAND,
+    MOUNTAIN_LOW,
+    MOUNTAIN_HIGH,
+    TREE_PINE,
+    TREE_OAK
 } TerrainType;
 
 typedef struct

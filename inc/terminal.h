@@ -23,6 +23,9 @@
 #define T_LM 50
 #define T_LR 51
 
+#define T_WD 50
+#define T_HT 30
+
 chtype terminal_current_color;
 int terminal_current_key;
 
@@ -35,7 +38,5 @@ void terminal_clear();
 void terminal_refresh();
 void terminal_input();
 attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg);
-size_t terminal_get_width();
-size_t terminal_get_height();
 
 #endif

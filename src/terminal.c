@@ -23,6 +23,8 @@ void terminal_init()
     curs_set(0);
     keypad(win, TRUE);
 
+    resize_term(T_HT, T_WD);
+
     if (!has_colors())
     {
         exit(EXIT_FAILURE);
@@ -71,14 +73,4 @@ void terminal_input()
 attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg)
 {
     return COLOR_PAIR(fg << 4 | bg) | (bbg ? A_BOLD : A_NORMAL) | A_REVERSE | (bfg ? A_BOLD : A_NORMAL);
-}
-
-size_t terminal_get_width()
-{
-    return getmaxx(win);
-}
-
-size_t terminal_get_height()
-{
-    return getmaxy(win);
 }

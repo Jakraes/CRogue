@@ -1,12 +1,12 @@
 #include "object.h"
 
-Object *object_new(unsigned char glyph, attr_t color, char *name, char *description)
+Object *object_new(char *glyph, attr_t color, char *name, char *description)
 {
     Object *result = malloc(sizeof(Object));
 
-    result->glyph = glyph;
+    result->glyph = strdup(glyph);
     result->color = color;
-    result->name = name;
+    result->name = strdup(name);
     result->description = description;
 
     return result;

@@ -6,6 +6,7 @@
 #include "item.h"
 #include "entity.h"
 #include "perlin.h"
+#include "util.h"
 
 typedef struct
 {

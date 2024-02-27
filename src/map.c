@@ -70,7 +70,7 @@ void map_generate_test(Map *map)
     {
         for (int x = 0; x < 10; x++)
         {
-            array_push(map->terrains, terrain_new(x, y, GRASS));
+            array_push(map->terrains, terrain_new(x, y, GRASS_LOW));
         }
     }
 
@@ -88,12 +88,21 @@ void map_generate_world(Map *map)
             Terrain *t;
 
             if (height < 0.05)
-                t = terrain_new(x, y, WATER);
-            else if (height < 0.15)
+            {
+                t = terrain_new(x, y, WATER_DEEP);
+            }
+            else if (height < 0.2)
+            {
+                t = terrain_new(x, y, WATER_SHALLOW);
+            }
+            else if (height < 0.3)
+            {
                 t = terrain_new(x, y, SAND);
+            }
             else
-                t = terrain_new(x, y, GRASS);
-
+            {
+                t = terrain_new(x, y, rand_int(0, 1) ? GRASS_HIGH : GRASS_LOW);
+            }
             array_push(map->terrains, t);
         }
     }
