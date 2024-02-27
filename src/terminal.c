@@ -1,5 +1,7 @@
 #include "terminal.h"
 
+static WINDOW *win = NULL;
+
 static void init_colors()
 {
     start_color();
@@ -15,11 +17,11 @@ static void init_colors()
 
 void terminal_init()
 {
-    initscr();
+    win = initscr();
     noecho();
     cbreak();
     curs_set(0);
-    keypad(stdscr, TRUE);
+    keypad(win, TRUE);
 
     if (!has_colors())
     {
@@ -36,34 +38,34 @@ void terminal_end()
 
 void terminal_change_color(attr_t color)
 {
-    attroff(terminal_current_color);
+    wattroff(win, terminal_current_color);
     terminal_current_color = color;
-    attron(terminal_current_color);
+    wattron(win, terminal_current_color);
 }
 
 void terminal_put(int x, int y, unsigned char c)
 {
-    mvaddch(y, x, c);
+    mvwaddch(win, y, x, c);
 }
 
 void terminal_put_string(int x, int y, char *str)
 {
-    mvaddstr(y, x, str);
+    mvwaddstr(win, y, x, str);
 }
 
 void terminal_clear()
 {
-    clear();
+    wclear(win);
 }
 
 void terminal_refresh()
 {
-    refresh();
+    wrefresh(win);
 }
 
 void terminal_input()
 {
-    terminal_current_key = getch();
+    terminal_current_key = wgetch(win);
 }
 
 attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg)
@@ -73,10 +75,10 @@ attr_t terminal_new_color(int fg, int bg, bool bfg, bool bbg)
 
 size_t terminal_get_width()
 {
-    return getmaxx(stdscr);
+    return getmaxx(win);
 }
 
 size_t terminal_get_height()
 {
-    return getmaxy(stdscr);
+    return getmaxy(win);
 }
