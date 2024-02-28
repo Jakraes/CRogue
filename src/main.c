@@ -7,6 +7,24 @@ int main(int argc, char *argv[])
 
 	app_loop();
 
+	/*
+	terminal_refresh();
+
+	chtype i = 0;
+
+	while (1)
+	{
+		terminal_clear();
+		for (int j = 0; j < T_HT; j++)
+		{
+			terminal_put(0, j, i++);
+		}
+		terminal_refresh();
+
+		terminal_input();
+	}
+	*/
+
 	app_end();
 
 	return EXIT_SUCCESS;

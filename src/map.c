@@ -66,7 +66,6 @@ bool map_is_occupied(Map *map, int x, int y)
 
 void map_generate_test(Map *map)
 {
-    /*
     for (int y = 0; y < 10; y++)
     {
         for (int x = 0; x < 10; x++)
@@ -74,7 +73,6 @@ void map_generate_test(Map *map)
             array_push(map->terrains, terrain_new(x, y, GRASS_LOW));
         }
     }
-    */
 
     array_push(map->entities, entity_new(0, 0, PLAYER));
     array_push(map->items, item_new(3, 4, IRON_SWORD));
@@ -86,8 +84,8 @@ void map_generate_world(Map *map)
     {
         for (int x = 0; x < map->width; x++)
         {
-            float height = pnoise2d(x * map_perlin_freq, y * map_perlin_freq, 1, 4, map->seed);
-            Terrain *t;
+            float height = pnoise2d(x * map_perlin_freq, y * map_perlin_freq, 0.5, 3, map->seed);
+            Terrain *t = NULL;
 
             if (height < 0.05)
             {
@@ -101,10 +99,35 @@ void map_generate_world(Map *map)
             {
                 t = terrain_new(x, y, SAND);
             }
+            else if (height < 0.8)
+            {
+                int i = rand_int(0, 3);
+
+                switch (i)
+                {
+                case 0:
+                    t = terrain_new(x, y, GRASS_LOW);
+                    break;
+                case 1:
+                    t = terrain_new(x, y, GRASS_HIGH);
+                    break;
+                case 2:
+                    t = terrain_new(x, y, TREE_PINE);
+                    break;
+                case 3:
+                    t = terrain_new(x, y, TREE_OAK);
+                    break;
+                }
+            }
+            else if (height < 0.95)
+            {
+                t = terrain_new(x, y, MOUNTAIN_LOW);
+            }
             else
             {
-                t = terrain_new(x, y, rand_int(0, 1) ? GRASS_HIGH : GRASS_LOW);
+                t = terrain_new(x, y, MOUNTAIN_HIGH);
             }
+
             array_push(map->terrains, t);
         }
     }

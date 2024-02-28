@@ -11,7 +11,7 @@ static void app_draw_player_inventory(Entity *entity)
 		terminal_change_color(p->object->color);
 		terminal_put(10, i, p->object->glyph);
 		terminal_change_color(def_color);
-		terminal_put_string(12, i, p->object->name);
+		// terminal_put(12, i, p->object->name);
 	}
 }
 
