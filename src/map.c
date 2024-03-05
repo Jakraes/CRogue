@@ -94,6 +94,20 @@ static void map_generate_overworld(Map *map)
     }
 }
 
+static void map_generate_test(Map *map)
+{
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            array_push(map->terrains, terrain_new(x, y, GRASS_LOW));
+        }
+    }
+
+    array_push(map->entities, entity_new(0, 0, PLAYER));
+    array_push(map->items, item_new(3, 4, IRON_SWORD));
+}
+
 static void map_generate(Map *map, MapType type)
 {
     switch (type)
@@ -102,6 +116,9 @@ static void map_generate(Map *map, MapType type)
         map_generate_overworld(map);
         break;
     case DUNGEON:
+        break;
+    case TEST:
+        map_generate_test(map);
         break;
     }
 }
@@ -165,18 +182,4 @@ bool map_is_occupied(Map *map, int x, int y)
     }
 
     return 0;
-}
-
-void map_generate_test(Map *map)
-{
-    for (int y = 0; y < 10; y++)
-    {
-        for (int x = 0; x < 10; x++)
-        {
-            array_push(map->terrains, terrain_new(x, y, GRASS_LOW));
-        }
-    }
-
-    array_push(map->entities, entity_new(0, 0, PLAYER));
-    array_push(map->items, item_new(3, 4, IRON_SWORD));
 }
