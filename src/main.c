@@ -17,7 +17,11 @@ int main(int argc, char *argv[])
 		terminal_clear();
 		for (int j = 0; j < T_HT; j++)
 		{
-			terminal_put(0, j, i++);
+			char num[32];
+			itoa(i, num, 10);
+
+			terminal_put_string(0, j, num);
+			terminal_put(6, j, i++);
 		}
 		terminal_refresh();
 

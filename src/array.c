@@ -6,12 +6,12 @@ static void array_allocate_space(Array *array)
 {
 	if (array->length == array->_space)
 	{
-		array->data = realloc(array->data, sizeof(void *) * (array->length + ARRAY_INCREMENT));
+		array->data = realloc(array->data, sizeof(void *) * (array->_space + ARRAY_INCREMENT));
 		array->_space += ARRAY_INCREMENT;
 	}
 	else if (array->length == array->_space - ARRAY_INCREMENT)
 	{
-		array->data = realloc(array->data, sizeof(void *) * (array->length - ARRAY_INCREMENT));
+		array->data = realloc(array->data, sizeof(void *) * (array->_space - ARRAY_INCREMENT));
 		array->_space -= ARRAY_INCREMENT;
 	}
 }
@@ -83,7 +83,7 @@ void *array_remove(Array *array, size_t index)
 {
 	void *result = array->data[index];
 
-	for (size_t i = index; i < array->length; i++)
+	for (size_t i = index; i < array->length - 1; i++)
 	{
 		array->data[i] = array->data[i + 1];
 	}

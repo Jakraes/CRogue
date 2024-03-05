@@ -8,6 +8,22 @@
 #include "perlin.h"
 #include "util.h"
 
+#define MAP_FREQ 0.05
+#define MAP_BIOME_FREQ 0.05
+
+typedef enum
+{
+    TEST,
+    OVERWORLD,
+    DUNGEON,
+} MapType;
+
+typedef enum
+{
+    FOREST,
+    PLAINS,
+} MapBiomeType;
+
 typedef struct
 {
     unsigned int width;
@@ -18,13 +34,8 @@ typedef struct
     Array *entities;
 } Map;
 
-extern float map_perlin_freq;
-
-Map *map_new(unsigned int width, unsigned int height, unsigned int seed);
+Map *map_new(unsigned int width, unsigned int height, unsigned int seed, MapType type);
 void map_free(void *map);
 bool map_is_occupied(Map *map, int x, int y);
-
-void map_generate_test(Map *map);
-void map_generate_world(Map *map);
 
 #endif

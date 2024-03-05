@@ -23,7 +23,7 @@ void terminal_init()
     curs_set(0);
     keypad(win, TRUE);
 
-    resize_term(T_HT, T_WD);
+    resize_term(T_HT + T_PHT * 2, T_WD + T_PWD * 2);
 
     if (!has_colors())
     {
@@ -45,12 +45,25 @@ void terminal_change_color(attr_t color)
     wattron(win, terminal_current_color);
 }
 
-void terminal_put(int x, int y, chtype c)
+void terminal_put_raw(int x, int y, chtype c)
 {
     mvwaddch(win, y, x, c);
 }
 
-void terminal_put_string(int x, int y, chtype *str)
+void terminal_put_string_raw(int x, int y, char *str)
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        terminal_put_raw(x + i, y, str[i]);
+    }
+}
+
+void terminal_put(int x, int y, chtype c)
+{
+    mvwaddch(win, y + T_PHT, x + T_PWD, c);
+}
+
+void terminal_put_string(int x, int y, char *str)
 {
     for (int i = 0; str[i] != '\0'; i++)
     {
